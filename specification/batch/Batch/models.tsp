@@ -7,7 +7,7 @@ using TypeSpec.Rest;
 using TypeSpec.Versioning;
 using Azure.Core;
 
-namespace BatchService;
+namespace Azure.Batch;
 
 @doc("OSType enums")
 enum OSType {
@@ -578,7 +578,7 @@ enum StatusLevelTypes {
 model ApplicationListResult {
   @doc("The list of applications available in the Account.")
   @items
-  value?: Application[];
+  value?: BatchApplication[];
 
   #suppress "@azure-tools/typespec-azure-core/casing-style" "The names of Property types must use camelCase"
   @doc("The URL to get the next set of results.")
@@ -587,7 +587,7 @@ model ApplicationListResult {
 }
 
 @doc("Contains information about an application in an Azure Batch Account.")
-model Application {
+model BatchApplication {
   @doc("A string that uniquely identifies the application within the Account.")
   id: string;
 
@@ -1008,7 +1008,7 @@ in the Job statistics.
 A Certificate that can be installed on Compute Nodes and can be used to
 authenticate operations on the machine.
 """)
-model Certificate {
+model BatchCertificate {
   @doc("""
 The X.509 thumbprint of the Certificate. This is a sequence of up to 40 hex
 digits.
@@ -1095,7 +1095,7 @@ model NameValuePair {
 model CertificateListResult {
   @doc("The list of Certificates.")
   @items
-  value?: Certificate[];
+  value?: BatchCertificate[];
 
   #suppress "@azure-tools/typespec-azure-core/casing-style" "The names of Property types must use camelCase"
   @doc("The URL to get the next set of results.")
